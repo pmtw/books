@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Add comment
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<h2>Add Comment:</h2> 
+
+
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %} 
+    {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+</form>
+</br>
+<a href="{% url 'posts' %}">Return to View</a>
+
+{% endblock %} 

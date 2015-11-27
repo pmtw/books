@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Confirm delete book
+{% endblock %}
+
+{% block menu %}
+  
+{% endblock %}
+
+
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    
+    <input type="submit" value="Confirm" />
+    <a href="{% url 'posts' %}">Return</a>
+</form>
+{% endblock %}  
+
+
+    <input type="button" onclick="url'posts'" value="Return" />

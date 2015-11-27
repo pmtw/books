@@ -1,0 +1,17 @@
+
+<h1>pk={{ object.pk }} {{ object.title }}</h1>
+
+<h2>Comments: ({{ object.number_of_comments }}) </h2> 
+<a href="{% url 'add_comment' 1 %}">Add comment</a> 
+
+<ul>
+    {% for comment in comments %}
+     
+     <li> {{ comment.id }} {{ post_pk }} {{ comment.content }} by {{ comment.author.username }}
+     <a href="{% url 'delete_comment' comment.id %}">Delete comment</a> </li>   
+       
+    {% endfor %}
+</ul>
+
+<a href="{% url 'posts' %}">Return to list</a>
+
