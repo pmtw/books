@@ -12,14 +12,17 @@
 
 <h1>{{ object.title }}</h1>
 <h2>Add Comment:</h2> 
-
-
+,
 <form method="post">
     {% csrf_token %}
+    {{ object }}
     {% bootstrap_form form %} 
     {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
 </form>
 </br>
-<a href="{% url 'posts' %}">Return to View</a>
+
+<a href="{% url 'posts' %}">Return to list</a>
 
 {% endblock %} 
+
+

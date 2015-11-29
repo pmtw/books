@@ -39,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'post',
     'bootstrap3',
-#    'bootstrap_form',
+    'coverage',
+    'selenium',
+
 )
 
 MIDDLEWARE_CLASSES = (

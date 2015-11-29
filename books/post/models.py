@@ -9,7 +9,7 @@ class Post(models.Model):
     author_fn = models.CharField(max_length=10)
     author_sn = models.CharField(max_length=14)
     title = models.CharField(max_length=64)
-    content = models.TextField()
+    content = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, null=True)

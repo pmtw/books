@@ -1,3 +1,4 @@
 django==1.8.3
 django-bootstrap3==4.7.0
 pytz==2014.4
+selenium==2.48.0

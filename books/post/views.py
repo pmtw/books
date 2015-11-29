@@ -23,7 +23,7 @@ class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'post/add_comment.html'
-    success_url = reverse_lazy('posts')
+#    success_url = reverse_lazy('view')
 #    @property
 #    def success_url(self):
 #        return reverse('view')
@@ -62,9 +62,12 @@ class CommentCreateView(CreateView):
 class CommentDeleteView(DeleteView):
     model = Comment
     template_name = 'post/comment_confirm_delete.html'
-    success_url = reverse_lazy('posts')
-
-
+    success_url = reverse_lazy('view')
+'''
+    def get_success_url(self):
+        return reverse_lazy('view', 
+            kwargs={'pk': self.kwargs['post_pk']})
+'''
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post/view.html'
