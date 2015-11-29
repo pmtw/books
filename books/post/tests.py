@@ -5,9 +5,9 @@ from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 
 import books
-from views import PostListView
+from post.views import PostListView
 # Create your tests here.
-# import books
+
 
 
 
@@ -15,27 +15,32 @@ class PostTestCase(unittest.TestCase):
     """
     Post application unittests.
     """
-    '''
+    
     def setUp(self):
         """
         Setup environment before each unittest.
         """
-        books.settings['TESTING'] = True
+        pass
 
     def tearDown(self):
         """
         Clean environment after unittest.
         """
-        del books.settings['TESTING']   
-     '''   
-
+        pass 
 
 
     def test_root_url_resolves_to_home_page_view(self):
+        """
+        Sprawdzenie poprawność adresu url czyli istnienia dla niego odpowiedniego widoku
+        """        
         response = resolve('/')
         self.assertEqual(response, PostListView) 
     
+    
     def test_welcome_of_home_page_view(self):
+        """
+        Sprawdzenie statusu i zawartość wyswietlanej przez widok strony
+        """
         request = HttpRequest()
         response = PostListView()
         self.assertEqual(response.status_code, 200)
@@ -43,9 +48,16 @@ class PostTestCase(unittest.TestCase):
         self.assertNotIn('<h2>Send List to pdf</h2>', response.data)
         
         
-        
+if __name__ == '__main__':
+    unittest.main()
     
-'''       
+    
+    
+    
+    
+            
+    
+'''     
     
 
     def test_welcome_page(self):
@@ -92,6 +104,3 @@ class PostTestCase(unittest.TestCase):
         resp = self.client.get('/wynik')
         self.assertEqual(resp.status_code, 200)
 '''
-
-if __name__ == '__main__':
-    unittest.main()
