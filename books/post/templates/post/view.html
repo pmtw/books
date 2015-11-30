@@ -1,17 +1,21 @@
 
-<h1>pk={{ object.pk }} {{ object.title }}</h1>
+<h2>Title: {{ object.title }}</h2>
 
-<h2>Comments: ({{ object.number_of_comments }}) </h2> 
-<a href="{% url 'add_comment' 1 %}">Add comment</a> 
+<h2>List of comments: <h4>(number of comments: {{ object.number_of_comments }})</h4></h2>
+<a href="{% url 'add_comment' 1 %}"><h3>Add comment</h3></a> 
 
-<ul>
+
+    Base book number (pk) = {{ object.pk }}
     {% for comment in comments %}
      
-     <li> {{ comment.id }} {{ post_pk }} {{ comment.content }} by {{ comment.author.username }}
-     <a href="{% url 'delete_comment' comment.id %}">Delete comment</a> </li>   
-       
+     <ol> 
+          <li> Base comment number ={{ comment.id }} {{ post_pk }} </br>
+          <h5>Comment:</h5> {{ comment.content }} </br>
+          by: {{ comment.author.username }}
+          <a href="{% url 'delete_comment' comment.id %}">Delete comment</a> </li>   
+     </ol> 
     {% endfor %}
-</ul>
+
 
 <a href="{% url 'posts' %}">Return to list</a>
 

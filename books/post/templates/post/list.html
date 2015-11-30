@@ -11,9 +11,11 @@
 {% endblock %}
 
 {% block content %}
-
+    <ol>
 {% for post in object_list %}
-    {% include 'post/single_post_line.html' %}
+    
+    <li>{% include 'post/single_post_line.html' %}</li>
+    
 {% endfor %}
-
+    </ol>
 {% endblock %}

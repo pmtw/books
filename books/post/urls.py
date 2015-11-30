@@ -13,7 +13,7 @@ urlpatterns = patterns(
     url(r'^delcomment/(?P<post_pk>\d+)/$', views.CommentDeleteView.as_view(pk_url_kwarg='post_pk'), name='delete_comment'),
     
     
-    url(r'^logout/$', views.PostListView.as_view(), name='logout'),
+#   url(r'^logout/$', views.PostListView.as_view(), name='logout'),
 #    url(r'^add/comment/(?P<post_pk>\d+)/$',
 #        views.CommentCreateView.as_view(), name='add_comment'),
 )

@@ -1,10 +1,12 @@
 # encoding: utf-8
+import selenium
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.auth.models import User
 
 class AddPost(LiveServerTestCase):
+    
     def setUp(self):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
@@ -15,11 +17,13 @@ class AddPost(LiveServerTestCase):
     def tearDown(self):
         self.browser.quit()
 
+
     def test_adding_post_without_logging(self):
-        # Kuba próbuje wejść na stronę logowania książki bez logowania
+        # Ktos próbuje wejść na stronę dodawania książki bez logowania
         self.browser.get(self.live_server_url+"/add")
         self.browser.set_window_size(1024, 768)
         self.assertEqual(self.browser.current_url, self.live_server_url+"/login")
+
 
     def test_adding_post_after_logging(self):
         # Czarek pracę ze stroną zaczyna od logowania
@@ -35,6 +39,6 @@ class AddPost(LiveServerTestCase):
 
         self.browser.get(self.live_server_url+"/add")
         self.browser.set_window_size(1024, 768)
-        self.assertIn('Add post', self.browser.title)
-        self.fail('write me')
+        self.assertIn('Add book', self.browser.title)
+#       self.fail('write me')
         

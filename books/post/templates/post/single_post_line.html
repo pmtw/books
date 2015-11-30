@@ -1,13 +1,16 @@
 <div class="panel-body">
-    <p> pk(id)={{ post.pk }}
-        {{ post.post_id }}.
-        {{ post.owner }}
-        {{ post.author_fn }}
-        {{ post.author_sn }}
-        {{ post.title }}
-        {{ post.content }}
-        {{ post.created }}
-        {{ post.created}}
+    
+        <h4> Book number (user id) = {{ post.post_id }}. </h4>
+        <ol><li> Base book number (pk)={{ post.pk }} </li>
+            <li> Owner: {{ post.owner }} </li>
+            <li> Author name: {{ post.author_fn }} </li>
+            <li> Author surname: {{ post.author_sn }} </li>
+            <li> Title: {{ post.title }} </li>
+            <li> Content: {{ post.content }} </li>
+            <li> Created: {{ post.created }} </li>
+            <li> Modified: {{ post.modified}} </li>
+        </ol>
+        
     {% if request.user.is_authenticated %}    
         <a href="{% url 'view' post.id %}">View</a>
         <a href="{% url 'edit_post' post.id %}">Edit</a>
@@ -17,6 +20,6 @@
      
      
         
-    </p>
+   
     
 </div>

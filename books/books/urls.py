@@ -19,11 +19,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-
-
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('post.urls')),
-    
-    
+    url(r'^user/', include('users.urls')),
+
 ]
