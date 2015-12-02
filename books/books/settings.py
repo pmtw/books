@@ -114,3 +114,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/user/login/'
+
+DJANGO_SETTINGS_MODULE = 'test_sqlite3'
+
+DEFAULT_CHARSET = 'utf-8'

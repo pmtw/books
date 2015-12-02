@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block menu %}
+     {% include 'menu.html' with active='add_comment' %}
 {% endblock %}
 
 {% block content %}
@@ -20,7 +21,7 @@
     {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
 </form>
 </br>
-
+{{ object.id  }}
 <a href="{% url 'posts' %}">Return to list</a>
 
 {% endblock %} 

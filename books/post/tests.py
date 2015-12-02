@@ -1,14 +1,13 @@
+
+
 import unittest
 from django.test import TestCase
-
+from django.test import Client
 from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 
-import books
-from post.views import PostListView
+from post.models import Post
 # Create your tests here.
-
-
 
 
 class PostTestCase(unittest.TestCase):
@@ -20,37 +19,131 @@ class PostTestCase(unittest.TestCase):
         """
         Setup environment before each unittest.
         """
-        pass
+        self.client = Client()
 
     def tearDown(self):
         """
         Clean environment after unittest.
         """
-        pass 
-
-
-    def test_root_url_resolves_to_home_page_view(self):
+        pass
+        
+  
+    def test_answer_login_page_view(self):
         """
-        Sprawdzenie poprawność adresu url czyli istnienia dla niego odpowiedniego widoku
-        """        
-        response = resolve('/')
-        self.assertEqual(response, PostListView) 
+        Sprawdzenie poprawnosci odpowiedzi strony logowania
+        """       
+        response = self.client.post('/user/login/',{'username': 'admin', 'password': 'admin'})
+        self.assertEqual(response.status_code, 200 or 302)
+        self.assertIn('Login', response.content)
+   
+    def test_answer_home_page_view(self):
+        """
+        Sprawdzenie poprawnosci odpowiedzi strony glownej
+        """       
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Books menu', response.content)
+        
+      
+    def test_answer_add_page_view(self):
+        """
+        Sprawdzenie poprawnosci odpowiedzi strony nowej pozycji
+        """       
+        response = self.client.post('/add/', follow=True)
+        self.assertEqual(response.status_code, 200)      
+        self.assertIn('nonauthenticated', response.content)
+        
+      
+
+    
+if __name__ == '__main__':
+    unittest.main()
+       
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        
+'''        
     def test_welcome_of_home_page_view(self):
         """
-        Sprawdzenie statusu i zawartość wyswietlanej przez widok strony
+        Sprawdzenie statusu i zawartosc wyswietlanej przez widok strony
         """
         request = HttpRequest()
         response = PostListView()
         self.assertEqual(response.status_code, 200)
-        self.assertIn('<h2>List of books</h2>', response.data)
+        self.assertIn('<h2>List of books</h2>', response.content)
         self.assertNotIn('<h2>Send List to pdf</h2>', response.data)
+'''        
         
-        
-if __name__ == '__main__':
-    unittest.main()
-    
+
     
     
     

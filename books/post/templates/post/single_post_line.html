@@ -3,9 +3,9 @@
         <h4> Book number (user id) = {{ post.post_id }}. </h4>
         <ol><li> Base book number (pk)={{ post.pk }} </li>
             <li> Owner: {{ post.owner }} </li>
-            <li> Author name: {{ post.author_fn }} </li>
-            <li> Author surname: {{ post.author_sn }} </li>
-            <li> Title: {{ post.title }} </li>
+            <li> Author name: <b>{{ post.author_fn }} </b></li>
+            <li> Author surname: <b>{{ post.author_sn }} </b></li>
+            <li> Title: <b>{{ post.title }}</b> </li>
             <li> Content: {{ post.content }} </li>
             <li> Created: {{ post.created }} </li>
             <li> Modified: {{ post.modified}} </li>

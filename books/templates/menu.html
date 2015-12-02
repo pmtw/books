@@ -12,7 +12,10 @@
         <div class="navbar-header"> <a href="{% url 'userlist' %}"> <h1>Users menu (return): </h1></a> </div> </br>
     {% elif active == 'login' %}
         <div class="navbar-header"> <a href="{% url 'userlist' %}"> <h1>Users menu (return): </h1></a> </div> </br>
-    
+    {% elif active == 'view' %}
+        <div class="navbar-header"> <a href="{% url 'posts' %}"> <h1>Books menu: (return) </h1></a> </div> </br>
+    {% elif active == "add_comment" %}
+        <div class="navbar-header"> <a href="{% url 'posts' %}"> <h1>Books menu: (return) </h1></a> </div> </br>
     {% endif %}
     
 <!-- 

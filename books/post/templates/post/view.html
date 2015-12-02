@@ -1,21 +1,35 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
 
-<h2>Title: {{ object.title }}</h2>
+{% block title %}
+    View of book
+{% endblock %}
 
-<h2>List of comments: <h4>(number of comments: {{ object.number_of_comments }})</h4></h2>
-<a href="{% url 'add_comment' 1 %}"><h3>Add comment</h3></a> 
+{% block menu %}
+    {% include 'menu.html' with active='view' %}
+{% endblock %}
 
-
+{% block content %}
+   
+ <h2>Author: {{ object.author_fn }} {{ object.author_sn }}, Title: {{ object.title }}</h2>
     Base book number (pk) = {{ object.pk }}
+ <h2>List of comments: </h2>
+    <b>(number of comments: {{ object.number_of_comments }}) </b>
+ <a href="{% url 'add_comment' 1 %}"><h3>Add comment</h3></a> 
+
+    <ol>
     {% for comment in comments %}
+      
+          <li>  {{ post_pk }} 
+          <b>Comment:</b> (Base comment number ={{ comment.id }}) </br>
+          <p>{{ comment.content }}</p> </br>
+          by: {{ comment.author.username }} 
+          <a href="{% url 'delete_comment' comment.id %}"> Delete comment </a> </li> </br>
      
-     <ol> 
-          <li> Base comment number ={{ comment.id }} {{ post_pk }} </br>
-          <h5>Comment:</h5> {{ comment.content }} </br>
-          by: {{ comment.author.username }}
-          <a href="{% url 'delete_comment' comment.id %}">Delete comment</a> </li>   
-     </ol> 
     {% endfor %}
+    </ol>   
+<a href="{% url 'posts' %}">Return to books</a>   
+{% endblock %}
 
 
-<a href="{% url 'posts' %}">Return to list</a>
 
